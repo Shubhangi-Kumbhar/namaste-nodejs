@@ -2,16 +2,23 @@ const express = require('express');
 
 const app = express();
 
-app.use('/test', (req, res) => {
-  res.send('Testing from server');
+app.get('/user', (req, res) => {
+  res.send('This is user get call');
 });
 
-app.use('/hello', (req, res) => {
+app.post('/user', (req, res) => {
+  res.send({ firstName: 'Shubhangi', lastName: 'Kumbhar', age: 31 });
+});
+
+app.delete('/user', (req, res) => {
+  res.send('User details has been deleted successfully');
+});
+
+app.patch('/user', (req, res) => {
+  res.send('Use details has been updated succesfully');
+});
+app.use('/user', (req, res) => {
   res.send('Hello from server');
-});
-
-app.use('/', (req, res) => {
-  res.send('Hello from dashboard');
 });
 
 app.listen(7777, () => {
